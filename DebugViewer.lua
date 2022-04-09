@@ -18,9 +18,9 @@ rconsoleclear();
 local AlreadyChecked = {};
 
 local function LoopThrough(a1)
+    if (typeof(a1) == 'number' or typeof(a1) == 'string') then return; end;
     if (table.find(AlreadyChecked, a1)) then return; end;
     table.insert(AlreadyChecked, a1);
-    if (typeof(a1) == 'number' or typeof(a1) == 'string') then return; end;
     if (typeof(a1) == 'function' and islclosure(a1)) then 
         rconsoleprint('@@WHITE@@');
         rconsoleprint('CHECKING: ' .. getinfo(a1).name .. '\n');
