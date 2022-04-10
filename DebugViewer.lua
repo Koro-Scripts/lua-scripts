@@ -44,6 +44,11 @@ local function LoopThrough(a1)
                 rconsoleprint('@@CYAN@@');
                 rconsoleprint('    Index: ' .. tostring(i) .. '  Value: ' .. tostring(v) .. '\n');
             end;
+            if (typeof(v) == 'table' and not table.find(AlreadyChecked, tostring(v))) then 
+                table.insert(AlreadyChecked, tostring(v));
+                rconsoleprint('@@YELLOW@@');
+                rconsoleprint('Table Index: ' .. tostring(i) .. '\n');
+            end;
             LoopThrough(v);
         end;
     end;
