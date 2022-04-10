@@ -18,7 +18,6 @@ rconsoleclear();
 local AlreadyChecked = {};
 
 local function LoopThrough(a1)
-    if (typeof(a1) == 'number' or typeof(a1) == 'string') then return; end;
     if (table.find(AlreadyChecked, a1)) then return; end;
     table.insert(AlreadyChecked, a1);
     if (typeof(a1) == 'function' and islclosure(a1)) then 
@@ -41,6 +40,10 @@ local function LoopThrough(a1)
     end;
     if (typeof(a1) == 'table') then
         for i,v in pairs(a1) do 
+            if (typeof(v) == 'number' or typeof(v) == 'string') then
+                rconsoleprint('@@CYAN@@');
+                rconsoleprint('    Index: ' .. tostring(i) .. '  Value: ' .. tostring(v) .. '\n');
+            end;
             LoopThrough(v);
         end;
     end;
