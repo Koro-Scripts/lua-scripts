@@ -22,7 +22,7 @@ local function LoopThrough(a1)
     table.insert(AlreadyChecked, a1);
     if (typeof(a1) == 'function' and islclosure(a1)) then 
         rconsoleprint('@@WHITE@@');
-        rconsoleprint('CHECKING: ' .. getinfo(a1).name .. '\n');
+        rconsoleprint('CHECKING: ' .. getinfo(a1, 'n').name .. '\n');
         for i,v in pairs(getconstants(a1)) do 
             rconsoleprint('@@BLUE@@');
             rconsoleprint('    Constant: ' .. tostring(v) .. '\n');
@@ -34,7 +34,7 @@ local function LoopThrough(a1)
         end;
         for i,v in pairs(getprotos(a1)) do 
             rconsoleprint('@@MAGENTA@@');
-            rconsoleprint('    Proto: ' .. tostring(a1) .. ' ' .. getinfo(a1).name .. '\n');
+            rconsoleprint('    Proto: ' .. tostring(a1) .. ' ' .. getinfo(a1, 'n').name .. '\n');
             LoopThrough(v);
         end;
     end;
